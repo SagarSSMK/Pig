@@ -1,3 +1,5 @@
+Comparing the 2001 file with 2009 file
+
 file2001 = LOAD '/home/hduser/Desktop/Files/CSV/2001.csv' using PigStorage(',') as  (id:long, not_adusted:chararray, jan:int, feb:int, mar:int, apr:int, may:int,june:int,july:int, aug:int, sep:int, oct:int, nov:int, dec:int, total:int);
 
 
