@@ -1,0 +1,25 @@
+file2001 = LOAD '/home/hduser/Desktop/Files/CSV/2001.csv' using PigStorage(',') as  (id:long, not_adusted:chararray, jan:int, feb:int, mar:int, apr:int, may:int,june:int,july:int, aug:int, sep:int, oct:int, nov:int, dec:int, total:int);
+
+
+file2009 = LOAD '/home/hduser/Desktop/Files/CSV/2009.csv' using PigStorage(',') as  (id:long, not_adusted:chararray, jan:int, feb:int, mar:int, apr:int, may:int,june:int,july:int, aug:int, sep:int, oct:int, nov:int, dec:int, total:int);
+
+
+Name_total1= FOREACH file2001 GENERATE $1,$14;
+Name_total2= FOREACH file2009 GENERATE $1,$14;
+Join20012009 = JOIN Name_total1 BY not_adusted, Name_total2 BY not_adusted;
+
+c2 = FOREACH Join20012009 GENERATE (CASE $3/$1
+			WHEN 0 then'lesser than 10'
+			WHEN 1 then'lesser than 10'
+			WHEN 2 then'lesser than 10'
+			WHEN 3 then'lesser than 10'
+			WHEN 4 then'lesser than 10'
+			WHEN 5 then'lesser than 10'
+			WHEN 6 then'lesser than 10'
+			WHEN 7 then'lesser than 10'
+			WHEN 8 then'lesser than 10'
+			WHEN 9 then'lesser than 10'
+			WHEN 10 then'lesser than 10'
+			ELSE 'greater than 10' END);
+
+dump c2;
